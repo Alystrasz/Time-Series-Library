@@ -57,6 +57,9 @@ def print_args(args):
     print(f'  {"P Hidden Dims:":<20}{p_hidden_dims_str:<20}{"P Hidden Layers:":<20}{args.p_hidden_layers:<20}') 
     print()
 
-    print("\033[1m" + "FLI Params" + "\033[0m")
+    print("\033[1m" + "Compression Params" + "\033[0m")
+    print(f'  {"Use ratio removal":<20}{args.ratio_removal}')
+    if args.ratio_removal:
+        print(f'  {"Removal modulo":<20}{args.removal_modulo}')
     print(f'  {"Use FLI":<20}{args.fli}')
     print()

@@ -23,4 +23,5 @@ python -u run.py \
   --top_k 5 \
   --des 'Exp' \
   --itr 1 \
-  -fli
+  -ratio_removal \
+  --removal_modulo 2

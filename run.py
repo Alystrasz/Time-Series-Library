@@ -133,6 +133,8 @@ if __name__ == '__main__':
 
     # FLI
     parser.add_argument('-fli', action='store_true')
+    parser.add_argument('-ratio_removal', action='store_true', help="Enables ratio removal")
+    parser.add_argument('--removal_modulo', type=int, default=10, help="Regularly remove samples from dataset using modulo value against dataset indexes")
 
     # TimeXer
     parser.add_argument('--patch_len', type=int, default=16, help='patch length')

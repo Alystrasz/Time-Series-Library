@@ -248,8 +248,12 @@ class Dataset_Custom(Dataset):
         df_raw = df_raw[['date'] + cols + [self.target]]
 
         # Data compression
-        if self.args.fli:
-            print(df_raw.head())
+        if self.args.ratio_removal:
+            df_raw = df_raw.reset_index() # create `index` column
+            print("Dataset length " + "\033[1m" + "before" + "\033[0m" + " removal: " + str(len(df_raw)))
+            df_raw = df_raw[df_raw['index'] % self.args.removal_modulo != 0]
+            print("Dataset length " + "\033[1m" + "after" + "\033[0m" + " removal: "  + str(len(df_raw)))
+            df_raw = df_raw.drop(['index'], axis=1) # removing index column since it's not needed anymore and would fiddle with the codebase
 
         num_train = int(len(df_raw) * 0.7)
         num_test = int(len(df_raw) * 0.2)
